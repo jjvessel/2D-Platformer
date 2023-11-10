@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 
+var coins = 0
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -43,3 +44,16 @@ func _physics_process(delta):
 func _on_exit_body_entered(body):
 	if body.name == "Player":
 		get_tree().change_scene_to_file("res://level_2.tscn")
+
+
+
+
+
+func _on_coin_collector_body_entered(body):
+	if body.name == "Coins":
+		body.get_coin(global_position)
+
+
+func add_coin():
+	coins += 1
+	print(coins)
