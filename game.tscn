@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://viuhle7pdov3"]
+[gd_scene load_steps=16 format=3 uid="uid://viuhle7pdov3"]
 
 [ext_resource type="Texture2D" uid="uid://c4jtnrlg2lc0n" path="res://Assets/Tilemap/tilemap-backgrounds_packed.png" id="1_4y7aj"]
 [ext_resource type="PackedScene" uid="uid://crxiu5k3eprvg" path="res://Player/player.tscn" id="2_qk3xh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cwqs0ahkukxei" path="res://Assets/Tiles/tile_0111.png" id="6_eof1x"]
 [ext_resource type="Texture2D" uid="uid://b8ornxa8723ha" path="res://Assets/Tiles/tile_0067.png" id="6_funcm"]
 [ext_resource type="Script" path="res://Coins.gd" id="7_t5wvf"]
+[ext_resource type="Texture2D" uid="uid://c3wcjsj5l2rgp" path="res://Assets/Tiles/Characters/tile_0000.png" id="8_08sdg"]
 [ext_resource type="AudioStream" uid="uid://dbjct4hivgkr4" path="res://Assets/Music.mp3" id="8_xewxy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xg4bt"]
@@ -681,6 +682,15 @@ layer_0/tile_data = PackedInt32Array(2293775, 0, 0, 1572884, 0, 0, 2031649, 0, 0
 script = ExtResource("7_t5wvf")
 
 [node name="Enemy" type="CharacterBody2D" parent="."]
+position = Vector2(1052, 620)
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+position = Vector2(-1, -1)
+scale = Vector2(1.70833, 1.83333)
+texture = ExtResource("8_08sdg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemy"]
+polygon = PackedVector2Array(16, 3, 7, 22, -6, 22, -22, 1, -14, -21, 12, -21)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_xewxy")
