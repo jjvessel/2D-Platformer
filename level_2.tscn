@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dnut6nhubkd28"]
+[gd_scene load_steps=17 format=3 uid="uid://dnut6nhubkd28"]
 
 [ext_resource type="Texture2D" uid="uid://c4jtnrlg2lc0n" path="res://Assets/Tilemap/tilemap-backgrounds_packed.png" id="1_00kel"]
 [ext_resource type="Script" path="res://Player/Player_Container.gd" id="1_82ka0"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://b8ornxa8723ha" path="res://Assets/Tiles/tile_0067.png" id="6_fb3cp"]
 [ext_resource type="Script" path="res://Coins.gd" id="7_djkiy"]
 [ext_resource type="AudioStream" uid="uid://dbjct4hivgkr4" path="res://Assets/Music.mp3" id="8_wpk6i"]
+[ext_resource type="Script" path="res://Enemy/Enemy.gd" id="9_vmsc2"]
+[ext_resource type="Texture2D" uid="uid://420niirr0ybc" path="res://Assets/Tiles/Characters/tile_0003.png" id="10_pcspw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ljh5a"]
 texture = ExtResource("1_00kel")
@@ -686,4 +688,23 @@ stream = ExtResource("8_wpk6i")
 autoplay = true
 max_distance = 8000.0
 
+[node name="Enemy" type="Area2D" parent="."]
+position = Vector2(1077, 643)
+script = ExtResource("9_vmsc2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+position = Vector2(1, -4)
+scale = Vector2(1.45833, 1.45833)
+texture = ExtResource("10_pcspw")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemy"]
+position = Vector2(0, -3)
+polygon = PackedVector2Array(18, -18, 12, 15, -9, 16, -17, -18)
+
+[node name="Timer" type="Timer" parent="Enemy"]
+wait_time = 2.0
+autostart = true
+
 [connection signal="body_entered" from="Exit" to="Player_Container" method="_on_exit_body_entered"]
+[connection signal="body_exited" from="Enemy" to="Enemy" method="_on_body_exited"]
+[connection signal="timeout" from="Enemy/Timer" to="Enemy" method="_on_timer_timeout"]
