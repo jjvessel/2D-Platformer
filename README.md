@@ -5,6 +5,14 @@
 ## Description
 
 ## Implementation
+I added:
+- Multiple levels
+- Coins
+- Different Sprites
+- Music
+- Mild attention paid to the end game experience
+- semi-polished
+- More than one (semi)functional enemies
 
 ## What Makes this a Game?
 
